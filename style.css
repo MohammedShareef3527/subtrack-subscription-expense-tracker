@@ -1,0 +1,723 @@
+/* =========================================================
+   SUBTRACK - CLEAN MODERN STYLE
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+    min-height: 100vh;
+    transition: background .3s, color .3s;
+    animation: pageLoad .5s ease;
+}
+
+@keyframes pageLoad {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #111827;
+    color: white;
+    padding: 28px 18px;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    box-shadow: 5px 0 25px rgba(0,0,0,.08);
+}
+
+.logo {
+    font-size: 23px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar nav a {
+    color: #d1d5db;
+    text-decoration: none;
+    padding: 13px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .25s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: #374151;
+    color: white;
+    transform: translateX(3px);
+}
+
+.sidebar-user {
+    margin-top: auto;
+    padding: 16px;
+    border-top: 1px solid #374151;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.sidebar-user small {
+    color: #9ca3af;
+}
+
+.sidebar-user strong {
+    font-size: 12px;
+    word-break: break-word;
+}
+
+.logout-btn {
+    border: 0;
+    padding: 9px;
+    border-radius: 8px;
+    background: #ef4444;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.main-content {
+    margin-left: 240px;
+    width: calc(100% - 240px);
+    padding: 35px 45px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.topbar h1 {
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.topbar p,
+.card > p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.top-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dark-btn {
+    width: 45px;
+    height: 45px;
+    border: 0;
+    border-radius: 50%;
+    background: #111827;
+    color: white;
+    cursor: pointer;
+    font-size: 19px;
+}
+
+.add-btn,
+.view-btn,
+.budget-btn,
+.save-btn,
+.primary-btn {
+    border: 0;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.add-btn {
+    background: #111827;
+    color: white;
+    padding: 13px 18px;
+}
+
+.view-btn {
+    background: #eef2ff;
+    color: #4338ca;
+    padding: 9px 13px;
+}
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 20px;
+}
+
+.summary-card,
+.card,
+.budget-card,
+.suggestion {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(15,23,42,.06);
+}
+
+.summary-card {
+    padding: 22px;
+    transition: transform .2s;
+}
+
+.summary-card:hover {
+    transform: translateY(-3px);
+}
+
+.card-icon,
+.service-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eef2ff;
+    margin-bottom: 12px;
+}
+
+.summary-card p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.summary-card h2 {
+    margin-top: 6px;
+    font-size: 25px;
+}
+
+.card,
+.budget-card,
+.suggestion {
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.section-header h2,
+.card h2 {
+    margin-bottom: 6px;
+}
+
+.section-header p {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+}
+
+.subscription {
+    display: grid;
+    grid-template-columns: 48px 1fr auto auto;
+    gap: 15px;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eef0f4;
+}
+
+.subscription:last-child {
+    border-bottom: 0;
+}
+
+.subscription .service-icon {
+    margin: 0;
+}
+
+.service-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.service-info span,
+.service-info small,
+.service-price span,
+.renewal-item span {
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.service-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.edit-btn,
+.delete-btn {
+    width: 35px;
+    height: 35px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background: #eef2ff;
+}
+
+.delete-btn {
+    background: #fee2e2;
+}
+
+.renewal-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eef0f4;
+}
+
+.renewal-item:last-child {
+    border-bottom: 0;
+}
+
+.renewal-item > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.renewal-date {
+    background: #eef2ff;
+    color: #4338ca;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.budget-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.budget-info div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.budget-info span {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.budget-btn {
+    padding: 10px 15px;
+    background: #111827;
+    color: white;
+}
+
+.progress {
+    height: 10px;
+    background: #eef2f7;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background: #4f46e5;
+    border-radius: 20px;
+    transition: width .5s ease;
+}
+
+.progress-bar.over-budget {
+    background: #ef4444;
+}
+
+.spending-status {
+    margin-top: 12px;
+    font-size: 13px;
+}
+
+.suggestion p {
+    margin-top: 8px;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.subscription-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group select,
+.filters input,
+.filters select,
+.auth-form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dfe3ea;
+    border-radius: 9px;
+    outline: none;
+    background: white;
+    color: #1f2937;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.filters input:focus,
+.filters select:focus,
+.auth-form input:focus {
+    border-color: #4f46e5;
+}
+
+.save-btn,
+.primary-btn {
+    padding: 13px 18px;
+    background: #4f46e5;
+    color: white;
+}
+
+.subscription-form .save-btn {
+    align-self: end;
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: 1fr 180px 150px;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.analytics-content {
+    margin-top: 20px;
+}
+
+.category-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 150px;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.category-name {
+    font-weight: 700;
+}
+
+.category-amount {
+    text-align: right;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.billing-summary {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.billing-summary p {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 9px;
+}
+
+.empty-state {
+    padding: 25px 0;
+    text-align: center;
+    color: #6b7280;
+}
+
+/* =========================================================
+   AUTH
+========================================================= */
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #eef2ff, #f8fafc);
+}
+
+.auth-card {
+    width: min(420px, 92%);
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(15,23,42,.12);
+    text-align: center;
+}
+
+.auth-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: #eef2ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 18px;
+}
+
+.auth-card h1 {
+    margin-bottom: 8px;
+}
+
+.auth-card > p {
+    color: #6b7280;
+    margin-bottom: 22px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 8px;
+}
+
+.auth-form label {
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 8px;
+}
+
+.auth-form .primary-btn {
+    margin-top: 12px;
+    text-align: center;
+}
+
+.auth-message {
+    min-height: 22px;
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+.auth-message.error {
+    color: #dc2626;
+}
+
+.auth-message.success {
+    color: #16a34a;
+}
+
+.auth-link {
+    margin-top: 18px !important;
+    font-size: 14px;
+}
+
+.auth-link a {
+    color: #4f46e5;
+    font-weight: 700;
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark {
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+body.dark .card,
+body.dark .summary-card,
+body.dark .budget-card,
+body.dark .suggestion,
+body.dark .auth-card {
+    background: #111827;
+    color: #e5e7eb;
+}
+
+body.dark .topbar h1,
+body.dark .card h2,
+body.dark .summary-card h2,
+body.dark .service-info strong,
+body.dark .renewal-item strong {
+    color: #f9fafb;
+}
+
+body.dark .topbar p,
+body.dark .section-header p,
+body.dark .card > p,
+body.dark .summary-card p,
+body.dark .service-info span,
+body.dark .service-info small,
+body.dark .service-price span,
+body.dark .renewal-item span,
+body.dark .category-amount,
+body.dark .suggestion p {
+    color: #9ca3af;
+}
+
+body.dark .form-group input,
+body.dark .form-group select,
+body.dark .filters input,
+body.dark .filters select,
+body.dark .auth-form input {
+    background: #1f2937;
+    color: #f9fafb;
+    border-color: #374151;
+}
+
+body.dark .billing-summary p {
+    background: #1f2937;
+}
+
+body.dark .subscription,
+body.dark .renewal-item {
+    border-color: #374151;
+}
+
+body.dark .view-btn,
+body.dark .edit-btn,
+body.dark .renewal-date {
+    background: #1e1b4b;
+    color: #c7d2fe;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+        padding: 25px;
+    }
+
+    .content-grid,
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .category-row {
+        grid-template-columns: 120px 1fr;
+    }
+
+    .category-amount {
+        grid-column: 2;
+        text-align: left;
+    }
+}
+
+@media (max-width: 650px) {
+    .sidebar {
+        position: static;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .top-buttons {
+        width: 100%;
+    }
+
+    .add-btn {
+        flex: 1;
+        text-align: center;
+    }
+
+    .subscription-form,
+    .filters,
+    .budget-info {
+        grid-template-columns: 1fr;
+    }
+
+    .subscription {
+        grid-template-columns: 48px 1fr;
+    }
+
+    .service-price,
+    .action-buttons {
+        grid-column: 2;
+        align-items: flex-start;
+    }
+
+    .sidebar-user {
+        margin-top: 25px;
+    }
+}

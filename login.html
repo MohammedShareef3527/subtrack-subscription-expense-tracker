@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | SubTrack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+
+    <main class="auth-card">
+        <div class="auth-logo">💳</div>
+        <h1>Welcome to SubTrack</h1>
+        <p>Sign in to manage your subscriptions.</p>
+
+        <form id="loginForm" class="auth-form">
+            <label>Email</label>
+            <input
+                id="loginEmail"
+                type="email"
+                placeholder="you@example.com"
+                required>
+
+            <label>Password</label>
+            <input
+                id="loginPassword"
+                type="password"
+                placeholder="Enter your password"
+                required>
+
+            <button type="submit" class="primary-btn">
+                Login
+            </button>
+        </form>
+
+        <p id="loginMessage" class="auth-message"></p>
+
+        <p class="auth-link">
+            Don't have an account?
+            <a href="signup.html">Create one</a>
+        </p>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

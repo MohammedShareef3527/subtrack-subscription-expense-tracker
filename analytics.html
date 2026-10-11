@@ -1,0 +1,74 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics | SubTrack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="dashboard">
+
+    <aside class="sidebar">
+        <h2 class="logo">💳 SubTrack</h2>
+
+        <nav>
+            <a href="index.html">🏠 Dashboard</a>
+            <a href="subscriptions.html">💳 Subscriptions</a>
+            <a href="analytics.html" class="active">📊 Analytics</a>
+            <a href="reminders.html">🔔 Reminders</a>
+        </nav>
+
+        <div class="sidebar-user">
+            <small>Logged in as</small>
+            <strong id="userEmail">Loading...</strong>
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <div class="topbar">
+            <div>
+                <h1>Analytics</h1>
+                <p>Understand your subscription spending.</p>
+            </div>
+
+            <button id="darkModeBtn" class="dark-btn">🌙</button>
+        </div>
+
+        <section class="card">
+            <h2>Spending by Category</h2>
+            <p>Monthly equivalent spending grouped by category.</p>
+
+            <div style="max-width: 450px; margin: 20px auto;">
+                <canvas id="categoryChart"></canvas>
+            </div>
+
+            <div id="categoryBreakdown" class="analytics-content"></div>
+        </section>
+
+        <section class="card">
+            <h2>Monthly Spending by Subscription</h2>
+            <p>Compare the monthly equivalent cost of each subscription.</p>
+
+            <div style="width: 100%; max-width: 750px; margin: 20px auto;">
+                <canvas id="billingChart"></canvas>
+            </div>
+
+            <div id="billingBreakdown"></div>
+        </section>
+
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
+```

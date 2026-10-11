@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubTrack Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="dashboard">
+
+    <aside class="sidebar">
+        <h2 class="logo">💳 SubTrack</h2>
+
+        <nav>
+            <a href="index.html" class="active">🏠 Dashboard</a>
+            <a href="subscriptions.html">💳 Subscriptions</a>
+            <a href="analytics.html">📊 Analytics</a>
+            <a href="reminders.html">🔔 Reminders</a>
+        </nav>
+
+        <div class="sidebar-user">
+            <small>Logged in as</small>
+            <strong id="userEmail">Loading...</strong>
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <div class="topbar">
+            <div>
+                <h1>Good morning 👋</h1>
+                <p>Here's your subscription overview.</p>
+            </div>
+
+            <div class="top-buttons">
+                <button id="darkModeBtn" class="dark-btn">🌙</button>
+                <a href="subscriptions.html" class="add-btn">+ Add Subscription</a>
+            </div>
+        </div>
+
+        <div class="summary-cards">
+            <div class="summary-card">
+                <div class="card-icon">💰</div>
+                <p>Monthly Cost</p>
+                <h2 id="monthlyCost">₹0.00</h2>
+            </div>
+
+            <div class="summary-card">
+                <div class="card-icon">📅</div>
+                <p>Yearly Billing</p>
+                <h2 id="yearlyCost">₹0.00</h2>
+            </div>
+
+            <div class="summary-card">
+                <div class="card-icon">📦</div>
+                <p>Active Subscriptions</p>
+                <h2 id="activeCount">0</h2>
+            </div>
+        </div>
+
+        <section class="budget-card card">
+            <div class="section-header">
+                <div>
+                    <h2>💰 Monthly Budget</h2>
+                    <p>Control your subscription spending</p>
+                </div>
+
+                <button id="setBudgetBtn" class="budget-btn">
+                    Set Budget
+                </button>
+            </div>
+
+            <div class="budget-info">
+                <div>
+                    <span>Budget</span>
+                    <strong id="budgetAmount">₹5,000.00</strong>
+                </div>
+
+                <div>
+                    <span>Spent</span>
+                    <strong id="budgetSpent">₹0.00</strong>
+                </div>
+
+                <div>
+                    <span>Remaining</span>
+                    <strong id="budgetRemaining">₹5,000.00</strong>
+                </div>
+            </div>
+
+            <div class="progress budget-progress">
+                <div id="budgetProgress" class="progress-bar"></div>
+            </div>
+
+            <p id="spendingStatus" class="spending-status">
+                🟢 Low spending
+            </p>
+        </section>
+
+        <section class="suggestion card">
+            <h2>💡 Smart Saving Tip</h2>
+            <p id="savingSuggestion">
+                Add subscriptions to get saving suggestions.
+            </p>
+        </section>
+
+        <div class="content-grid">
+            <section class="card">
+                <div class="section-header">
+                    <div>
+                        <h2>My Subscriptions</h2>
+                        <p>Your latest recurring payments</p>
+                    </div>
+
+                    <a href="subscriptions.html" class="view-btn">
+                        View All
+                    </a>
+                </div>
+
+                <div id="dashboardSubscriptions"></div>
+            </section>
+
+            <section class="card">
+                <div class="section-header">
+                    <div>
+                        <h2>Upcoming Renewals</h2>
+                        <p>Don't miss a payment</p>
+                    </div>
+                </div>
+
+                <div id="dashboardRenewals"></div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

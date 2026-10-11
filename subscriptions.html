@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscriptions | SubTrack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="dashboard">
+
+    <aside class="sidebar">
+        <h2 class="logo">💳 SubTrack</h2>
+
+        <nav>
+            <a href="index.html">🏠 Dashboard</a>
+            <a href="subscriptions.html" class="active">💳 Subscriptions</a>
+            <a href="analytics.html">📊 Analytics</a>
+            <a href="reminders.html">🔔 Reminders</a>
+        </nav>
+
+        <div class="sidebar-user">
+            <small>Logged in as</small>
+            <strong id="userEmail">Loading...</strong>
+            <button id="logoutBtn" class="logout-btn">Logout</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <div class="topbar">
+            <div>
+                <h1>Subscriptions</h1>
+                <p>Add and manage your recurring expenses.</p>
+            </div>
+
+            <button id="darkModeBtn" class="dark-btn">🌙</button>
+        </div>
+
+        <section class="card">
+            <div class="section-header">
+                <div>
+                    <h2>Add New Subscription</h2>
+                    <p>Save the details directly to your Supabase database.</p>
+                </div>
+            </div>
+
+            <form id="subscriptionForm" class="subscription-form">
+
+                <div class="form-group">
+                    <label for="subscriptionName">Subscription Name</label>
+                    <input
+                        id="subscriptionName"
+                        type="text"
+                        placeholder="e.g. Netflix"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category">
+                        <option>Entertainment</option>
+                        <option>Education</option>
+                        <option>Software</option>
+                        <option>Shopping</option>
+                        <option>Fitness</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cost">Cost</label>
+                    <input
+                        id="cost"
+                        type="number"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="₹ 0"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="billingCycle">Billing Cycle</label>
+                    <select id="billingCycle">
+                        <option>Monthly</option>
+                        <option>Yearly</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="billingDate">Next Billing Date</label>
+                    <input id="billingDate" type="date" required>
+                </div>
+
+                <button type="submit" class="save-btn">
+                    Add Subscription
+                </button>
+            </form>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <div>
+                    <h2>My Subscriptions</h2>
+                    <p>Search, filter, edit or delete your subscriptions.</p>
+                </div>
+            </div>
+
+            <div class="filters">
+                <input
+                    id="searchInput"
+                    type="search"
+                    placeholder="Search subscription...">
+
+                <select id="filterCategory">
+                    <option>All</option>
+                    <option>Entertainment</option>
+                    <option>Education</option>
+                    <option>Software</option>
+                    <option>Shopping</option>
+                    <option>Fitness</option>
+                    <option>Other</option>
+                </select>
+
+                <select id="filterBilling">
+                    <option>All</option>
+                    <option>Monthly</option>
+                    <option>Yearly</option>
+                </select>
+            </div>
+
+            <div id="subscriptionList"></div>
+        </section>
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
