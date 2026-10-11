@@ -721,3 +721,1113 @@ body.dark .renewal-date {
         margin-top: 25px;
     }
 }
+
+/* ========================================
+   SUBTRACK ANALYTICS GLOW-UP
+   ======================================== */
+
+:root {
+    --st-purple: #6558e8;
+    --st-purple-dark: #5144d6;
+    --st-lilac: #eeeaff;
+    --st-pink: #ff7198;
+    --st-blue: #63b3f5;
+    --st-ink: #24263b;
+    --st-muted: #85879c;
+    --st-page: #f7f6ff;
+    --st-border: #efedfa;
+}
+
+/* Page background and typography */
+body {
+    background: var(--st-page);
+    color: var(--st-ink);
+    font-family: Inter, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.main-content {
+    background:
+        radial-gradient(ellipse at 85% 0%,
+            rgba(210, 201, 255, 0.28), transparent 38%),
+        var(--st-page);
+    padding: 34px;
+}
+
+/* Page heading */
+.topbar {
+    margin-bottom: 30px;
+}
+
+.topbar h1 {
+    font-size: clamp(28px, 3vw, 36px);
+    font-weight: 800;
+    letter-spacing: -1.2px;
+    color: var(--st-ink);
+}
+
+.topbar p {
+    color: var(--st-muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Elegant floating cards */
+.main-content .card {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(232, 228, 250, 0.9);
+    border-radius: 22px;
+    padding: 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 35px rgba(73, 57, 140, 0.055);
+    transition: transform 180ms ease,
+                box-shadow 180ms ease;
+}
+
+.main-content .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 42px rgba(73, 57, 140, 0.09);
+}
+
+.main-content .card h2 {
+    color: var(--st-ink);
+    font-size: 21px;
+    font-weight: 750;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+.main-content .card > p {
+    color: var(--st-muted);
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+/* Give both chart areas consistent breathing room */
+#categoryChart,
+#billingChart {
+    max-width: 100%;
+}
+
+.main-content .card > div:has(> #categoryChart),
+.main-content .card > div:has(> #billingChart) {
+    margin-top: 24px !important;
+    margin-bottom: 24px !important;
+}
+
+/* Category spending rows */
+.analytics-content {
+    display: grid;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.category-row {
+    display: grid;
+    grid-template-columns: minmax(100px, 130px) minmax(60px, 1fr) auto;
+    align-items: center;
+    gap: 16px;
+}
+
+.category-name {
+    color: var(--st-ink);
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.progress {
+    height: 9px;
+    overflow: hidden;
+    background: #f0eef9;
+    border-radius: 999px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #8e82ff, #6254e8);
+    border-radius: inherit;
+    transition: width 500ms ease;
+}
+
+.category-amount {
+    color: #777991;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Billing summary */
+.billing-summary {
+    display: grid;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.billing-summary p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin: 0;
+    padding: 15px 17px;
+    background: #f8f7ff;
+    border: 1px solid #f0edff;
+    border-radius: 13px;
+    color: #666981;
+    font-size: 13px;
+}
+
+.billing-summary strong {
+    color: var(--st-ink);
+    font-size: 14px;
+    font-weight: 750;
+}
+
+/* Sidebar polish while keeping its existing dark style */
+.sidebar {
+    box-shadow: 5px 0 30px rgba(25, 25, 55, 0.035);
+}
+
+.sidebar nav a {
+    border-radius: 12px;
+    margin-bottom: 6px;
+    transition: background 180ms ease,
+                transform 180ms ease;
+}
+
+.sidebar nav a:hover {
+    transform: translateX(3px);
+}
+
+/* Theme button */
+.dark-btn {
+    border: 1px solid var(--st-border);
+    box-shadow: 0 5px 16px rgba(45, 37, 100, 0.08);
+    transition: transform 180ms ease;
+}
+
+.dark-btn:hover {
+    transform: rotate(-8deg) scale(1.06);
+}
+
+/* Small screens */
+@media (max-width: 760px) {
+    .main-content {
+        padding: 20px 14px;
+    }
+
+    .main-content .card {
+        padding: 20px 16px;
+        border-radius: 18px;
+    }
+
+    .category-row {
+        grid-template-columns: 1fr auto;
+        gap: 8px 12px;
+    }
+
+    .category-row .progress {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .category-amount {
+        font-size: 11px;
+    }
+
+    .billing-summary p {
+        padding: 13px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .main-content .card,
+    .sidebar nav a,
+    .dark-btn {
+        transition: none;
+    }
+}
+```css
+/* ===== SUBTRACK PURPLE AESTHETIC THEME ===== */
+
+body {
+    background: linear-gradient(135deg, #f5f0ff, #eee7ff, #faf7ff) !important;
+}
+
+.main-content {
+    background: transparent !important;
+}
+
+.card,
+.main-content .card {
+    background: rgba(255, 255, 255, 0.92) !important;
+    border: 1px solid #e5d9ff !important;
+    border-radius: 24px !important;
+    box-shadow: 0 10px 35px rgba(109, 40, 217, 0.08) !important;
+    padding: 28px !important;
+    margin-bottom: 24px !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(109, 40, 217, 0.14) !important;
+}
+
+h1, h2, h3 {
+    color: #302052 !important;
+}
+
+.topbar p,
+.card p {
+    color: #82749e;
+}
+
+.sidebar {
+    background: linear-gradient(180deg, #21143d, #302052, #3d2868) !important;
+}
+
+.sidebar nav a.active {
+    background: linear-gradient(135deg, #8055e8, #a78bfa) !important;
+    color: white !important;
+    border-radius: 12px;
+}
+
+button:not(.logout-btn) {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dark-btn {
+    background: #302052 !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+.progress {
+    background: #eee7ff !important;
+    border-radius: 999px !important;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #a78bfa, #7041db) !important;
+    border-radius: 999px !important;
+}
+
+.billing-summary p {
+    background: #f6f1ff !important;
+    border: 1px solid #ebe0ff;
+    border-radius: 14px !important;
+    padding: 15px !important;
+    margin: 10px 0 !important;
+}
+
+.billing-summary strong {
+    color: #7041db !important;
+}
+
+.analytics-content {
+    margin-top: 24px;
+}
+
+.category-row {
+    margin-bottom: 20px;
+}
+
+.category-name {
+    color: #433064;
+    font-weight: 600;
+}
+
+.category-amount {
+    color: #7659aa;
+}
+
+canvas {
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .card,
+    .main-content .card {
+        padding: 18px !important;
+        border-radius: 18px !important;
+    }
+}
+```css
+/* ========================================
+   SUBTRACK · LAVENDER DREAM THEME
+   ======================================== */
+
+:root {
+    --purple-950: #261344;
+    --purple-800: #493078;
+    --purple-600: #7650d8;
+    --purple-500: #8b68e8;
+    --purple-300: #c6b4ff;
+    --purple-100: #eee7ff;
+    --purple-50: #faf8ff;
+    --pink-100: #ffe4f0;
+    --text-main: #302344;
+    --text-soft: #857899;
+}
+
+/* Soft lavender canvas */
+body {
+    background:
+        radial-gradient(ellipse at 85% 0%, #e6d9ff 0%, transparent 35%),
+        radial-gradient(ellipse at 0% 80%, #f4e5ff 0%, transparent 35%),
+        #f8f6ff !important;
+    color: var(--text-main);
+}
+
+/* Elegant headings */
+h1 {
+    letter-spacing: -1.5px;
+    font-weight: 800 !important;
+}
+
+h2 {
+    letter-spacing: -0.6px;
+    font-weight: 750 !important;
+}
+
+.topbar {
+    margin-bottom: 28px;
+}
+
+.topbar p,
+.card > p {
+    line-height: 1.7;
+    color: var(--text-soft) !important;
+}
+
+/* Premium glass-like cards */
+.card,
+.main-content .card {
+    background: rgba(255, 255, 255, 0.88) !important;
+    border: 1px solid rgba(210, 193, 255, 0.65) !important;
+    border-radius: 26px !important;
+    box-shadow:
+        0 4px 10px rgba(71, 39, 130, 0.025),
+        0 16px 45px rgba(91, 60, 155, 0.07) !important;
+    padding: 30px !important;
+    margin-bottom: 26px !important;
+    transition: transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: #c7b2ff !important;
+    box-shadow: 0 20px 48px rgba(91, 60, 155, 0.12) !important;
+}
+
+/* Rich purple sidebar */
+.sidebar {
+    background: linear-gradient(
+        165deg,
+        #211432 0%,
+        #30204d 55%,
+        #49316d 100%
+    ) !important;
+    box-shadow: 8px 0 35px rgba(44, 26, 75, 0.08);
+}
+
+.sidebar .logo {
+    letter-spacing: -0.6px;
+}
+
+.sidebar nav a {
+    border-radius: 13px !important;
+    margin: 5px 0;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar nav a:hover {
+    background: rgba(190, 164, 255, 0.13) !important;
+    transform: translateX(3px);
+}
+
+.sidebar nav a.active {
+    background: linear-gradient(
+        120deg,
+        #8057db,
+        #a58af4
+    ) !important;
+    color: white !important;
+    box-shadow: 0 5px 18px rgba(132, 92, 226, 0.25);
+}
+
+/* Beautiful buttons */
+button {
+    border-radius: 12px;
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease,
+                filter 0.2s ease;
+}
+
+button:hover {
+    filter: brightness(1.04);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.dark-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px !important;
+    background: linear-gradient(135deg, #33204f, #54377f) !important;
+    box-shadow: 0 6px 18px rgba(57, 34, 91, 0.2);
+}
+
+/* Lavender spending progress bars */
+.progress {
+    height: 10px;
+    background: #f0ebfa !important;
+    border-radius: 99px !important;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(
+        90deg,
+        #c1a8ff,
+        #8c66ed,
+        #7047d4
+    ) !important;
+    border-radius: 99px !important;
+    box-shadow: 0 0 12px rgba(140, 102, 237, 0.18);
+}
+
+/* Category breakdown */
+.category-row {
+    margin: 22px 0 !important;
+}
+
+.category-name {
+    color: #493365 !important;
+    font-weight: 700 !important;
+}
+
+.category-amount {
+    color: #7e6a9e !important;
+    font-weight: 600;
+}
+
+/* Billing summary mini-cards */
+.billing-summary p {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: linear-gradient(110deg, #faf7ff, #f2ecff) !important;
+    border: 1px solid #e8ddff !important;
+    border-radius: 16px !important;
+    padding: 18px 20px !important;
+    margin: 12px 0 !important;
+    color: #68577f;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.billing-summary p:hover {
+    background: #eee5ff !important;
+    transform: translateX(3px);
+}
+
+.billing-summary strong {
+    color: #7045ce !important;
+    font-size: 1.05em;
+    white-space: nowrap;
+}
+
+/* Clean chart spacing */
+canvas {
+    max-width: 100%;
+}
+
+.analytics-content {
+    margin-top: 26px;
+}
+
+/* Gentle selection color */
+::selection {
+    background: #d9caff;
+    color: #302052;
+}
+
+/* Mobile polish */
+@media (max-width: 768px) {
+    .card,
+    .main-content .card {
+        padding: 20px !important;
+        border-radius: 20px !important;
+    }
+
+    h1 {
+        letter-spacing: -0.8px;
+    }
+
+    .billing-summary p {
+        padding: 14px !important;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+
+
+/* ==========================================
+   SUBTRACK: DREAMY LAVENDER DASHBOARD ✨
+   Additive styling only
+   ========================================== */
+
+:root {
+    --dream-cloud: #fbf8ff;
+    --dream-lilac: #eee5ff;
+    --dream-purple: #9b76ed;
+    --dream-deep: #6f48bd;
+    --dream-pink: #ffe8f2;
+    --dream-text: #382653;
+}
+
+/* Soft pastel atmosphere */
+body {
+    background-color: var(--dream-cloud);
+    background-image:
+        radial-gradient(
+            ellipse at 12% 8%,
+            rgba(218, 197, 255, 0.48),
+            transparent 36%
+        ),
+        radial-gradient(
+            ellipse at 88% 18%,
+            rgba(255, 222, 241, 0.40),
+            transparent 32%
+        ),
+        radial-gradient(
+            ellipse at 70% 90%,
+            rgba(225, 216, 255, 0.35),
+            transparent 38%
+        );
+    color: var(--dream-text);
+}
+
+/* ✨ SUBTRACK DREAMY SPARKLES ✨ */
+
+.main-content {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.main-content::before {
+   content: "✦  ✧  ✨  ⋆  ✦  ✧";
+    position: absolute;
+    top: 24px;
+    right: 38px;
+    z-index: 0;
+    color: #9464e8;
+    font-size: 28px;
+    letter-spacing: 12px;
+    text-shadow: 0 0 14px rgba(155, 118, 237, 0.65);
+    pointer-events: none;
+    animation: dream-float 3s ease-in-out infinite;
+}
+
+.main-content::after {
+    content: "✧  ✦  ⋆  ✨  ✧  ✦";
+    position: absolute;
+    top: 175px;
+    right: 28px;
+    z-index: 0;
+    color: #d47dbb;
+    font-size: 28px;
+    letter-spacing: 12px;
+    text-shadow: 0 0 14px rgba(212, 125, 187, 0.55);
+    pointer-events: none;
+    animation: dream-float 4s ease-in-out infinite reverse;
+}
+
+@keyframes dream-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+}
+
+/* Keep dashboard content above the decorations */
+.main-content > * {
+    position: relative;
+    z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .main-content::before,
+    .main-content::after {
+        animation: none;
+    }
+}
+
+/* Make dashboard cards feel soft and polished */
+.main-content .card,
+.main-content .stat-card,
+.main-content .summary-card {
+    border: 1px solid rgba(193, 166, 248, 0.40);
+    border-radius: 24px;
+    box-shadow:
+        0 8px 28px rgba(105, 72, 163, 0.07),
+        0 2px 7px rgba(105, 72, 163, 0.035);
+    transition:
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        border-color 220ms ease;
+}
+
+.main-content .card:hover,
+.main-content .stat-card:hover,
+.main-content .summary-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(155, 118, 237, 0.65);
+    box-shadow: 0 13px 32px rgba(105, 72, 163, 0.12);
+}
+
+/* Dreamy headings */
+.main-content h1 {
+    color: #382653;
+    letter-spacing: -0.8px;
+}
+
+.main-content h1::after {
+    content: " ✨";
+    color: var(--dream-purple);
+    font-size: 0.7em;
+    vertical-align: top;
+}
+
+/* Buttons with a soft purple glow */
+.main-content button {
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        filter 180ms ease;
+}
+
+.main-content button:hover {
+    filter: brightness(1.04);
+    box-shadow: 0 6px 18px rgba(111, 72, 189, 0.18);
+}
+
+.main-content button:active {
+    transform: scale(0.98);
+}
+
+/* Softer labels and pills */
+.main-content .badge,
+.main-content .tag,
+.main-content .category-label {
+    border-radius: 999px;
+}
+
+/* Respect reduced-motion preferences */
+@keyframes dream-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .main-content::before,
+    .main-content::after {
+        animation: none;
+    }
+
+    .main-content .card,
+    .main-content .stat-card,
+    .main-content .summary-card,
+    .main-content button {
+        transition: none;
+    }
+}
+
+
+/* ✨ VISIBLE DREAMY SPARKLES */
+.main-content {
+    background-image:
+        radial-gradient(circle, #b995ff 1.8px, transparent 2.5px),
+        radial-gradient(circle, #f0a9d4 1.8px, transparent 2.5px),
+        radial-gradient(circle, #b995ff 1.5px, transparent 2px);
+    background-size: 95px 85px, 130px 115px, 175px 145px;
+    background-position: 15px 10px, 55px 45px, 85px 20px;
+    background-repeat: repeat;
+}
+
+/* Keep the dashboard content above its background */
+.main-content > * {
+    position: relative;
+}
+
+
+/* 🎀 Cute lavender + blush subscription rows */
+
+/* Individual subscription row */
+#dashboardSubscriptions .subscription {
+    position: relative;
+    grid-template-columns: 48px minmax(0, 1fr) auto;
+    gap: 13px;
+    padding: 16px 12px;
+    margin: 5px 0;
+    border: 1px solid #eee4ff;
+    border-radius: 18px;
+    background: linear-gradient(
+        115deg,
+        #fffaff 0%,
+        #f8f3ff 65%,
+        #fff0f6 100%
+    );
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease;
+}
+
+#dashboardSubscriptions .subscription:hover {
+    transform: translateY(-2px);
+    border-color: #d6bfff;
+    box-shadow: 0 8px 20px rgba(137, 99, 201, 0.12);
+}
+
+/* Cute icon tile */
+#dashboardSubscriptions .service-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #eee5ff, #ffe8f2);
+    box-shadow: 0 3px 10px rgba(151, 113, 211, 0.10);
+}
+
+/* Service name and category */
+#dashboardSubscriptions .service-info strong {
+    color: #432b65;
+    font-size: 14px;
+    font-weight: 750;
+}
+
+#dashboardSubscriptions .service-info span {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: #f0e8ff;
+    color: #7955b5;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* Price gets a little extra emphasis */
+#dashboardSubscriptions .service-price strong {
+    color: #7041b8;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+#dashboardSubscriptions .service-price span {
+    color: #9a87b2;
+    font-size: 11px;
+}
+
+/* Gentle separators are no longer needed */
+#dashboardSubscriptions .subscription:last-child {
+    border-bottom: 1px solid #eee4ff;
+}
+
+/* Keep the hover effect calm for reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+    #dashboardSubscriptions .subscription {
+        transition: none;
+    }
+}
+
+
+/* 🎀 Service-specific pastel icon themes */
+
+/* ChatGPT: dreamy lilac */
+#dashboardSubscriptions .subscription:nth-child(1) .service-icon {
+    background: linear-gradient(135deg, #EDE4FF, #DCCBFF);
+    box-shadow: 0 4px 12px rgba(142, 103, 222, 0.18);
+}
+
+/* Prime: soft sky blue */
+#dashboardSubscriptions .subscription:nth-child(2) .service-icon {
+    background: linear-gradient(135deg, #E2F2FF, #CDE6FF);
+    box-shadow: 0 4px 12px rgba(89, 160, 225, 0.16);
+}
+
+/* Netflix: blush pink */
+#dashboardSubscriptions .subscription:nth-child(3) .service-icon {
+    background: linear-gradient(135deg, #FFE5EF, #FFC9DD);
+    box-shadow: 0 4px 12px rgba(224, 111, 160, 0.18);
+}
+
+/* A little extra glow when hovering over a service icon */
+#dashboardSubscriptions .subscription:hover .service-icon {
+    transform: scale(1.06) rotate(-3deg);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+/* Keep icon motion gentle for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    #dashboardSubscriptions .service-icon {
+        transition: none;
+    }
+
+    #dashboardSubscriptions .subscription:hover .service-icon {
+        transform: none;
+    }
+}
+
+/* 🌸 DREAMY UPCOMING RENEWALS */
+
+#upcomingRenewals .renewal-item {
+    padding: 14px 12px;
+    margin: 6px 0;
+    border: 1px solid #f0e4ff;
+    border-radius: 16px;
+    background: linear-gradient(
+        110deg,
+        #fcf8ff 0%,
+        #fff5fa 100%
+    );
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+#upcomingRenewals .renewal-item:hover {
+    transform: translateY(-2px);
+    border-color: #e4caff;
+    box-shadow: 0 6px 16px rgba(137, 99, 201, 0.10);
+}
+
+/* Soft pastel days-left badges */
+#upcomingRenewals .days-left,
+#upcomingRenewals .renewal-badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border: 1px solid #e9dcff;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #f0e8ff, #ffeaf3);
+    color: #7952b5;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* Gentle renewal text */
+#upcomingRenewals .renewal-item h3,
+#upcomingRenewals .renewal-item strong {
+    color: #432b65;
+}
+
+#upcomingRenewals .renewal-item p,
+#upcomingRenewals .renewal-item small {
+    color: #9481aa;
+}
+
+/* Accessible motion */
+@media (prefers-reduced-motion: reduce) {
+    #upcomingRenewals .renewal-item {
+        transition: none;
+    }
+
+    #upcomingRenewals .renewal-item:hover {
+        transform: none;
+    }
+}
+
+/* 💜 SUBTRACK ANALYTICS: LAVENDER DREAM */
+
+:root {
+    --analytics-lilac: #a78bfa;
+    --analytics-purple: #8052d6;
+    --analytics-blush: #f7c9e0;
+    --analytics-ink: #382653;
+}
+
+/* Analytics chart cards */
+.main-content .card:has(#categoryChart),
+.main-content .card:has(#billingChart) {
+    background: linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #fcf8ff 72%,
+        #fff5fa 100%
+    );
+    border: 1px solid #e7d9ff;
+    border-radius: 26px;
+    box-shadow: 0 12px 32px rgba(110, 76, 170, 0.08);
+    padding: 28px;
+}
+
+/* Clear, polished chart headings */
+.main-content .card:has(#categoryChart) h2,
+.main-content .card:has(#billingChart) h2 {
+    color: var(--analytics-ink);
+    letter-spacing: -0.5px;
+}
+
+/* Give charts a little breathing room */
+#categoryChart,
+#billingChart {
+    max-width: 100%;
+}
+
+/* Softer category spending bars */
+.category-row {
+    gap: 18px;
+    padding: 7px 0;
+}
+
+.category-name {
+    color: #594174;
+    font-weight: 700;
+}
+
+.progress {
+    height: 10px;
+    background: #f0e8fb;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(
+        90deg,
+        #c5a7ff 0%,
+        #9870ee 65%,
+        #8052d6 100%
+    );
+    border-radius: 999px;
+    box-shadow: 0 0 10px rgba(167, 139, 250, 0.18);
+}
+
+/* Pastel billing summary mini-cards */
+.billing-summary {
+    gap: 12px;
+}
+
+.billing-summary p {
+    padding: 16px 18px;
+    background: linear-gradient(
+        110deg,
+        #f8f2ff,
+        #fff4fa
+    );
+    border: 1px solid #eee1ff;
+    border-radius: 16px;
+    color: #765e91;
+    transition: border-color 180ms ease,
+                transform 180ms ease;
+}
+
+.billing-summary p:hover {
+    border-color: #d9c3ff;
+    transform: translateY(-2px);
+}
+
+.billing-summary strong {
+    color: #7546c4;
+    font-weight: 800;
+}
+
+/* Keep charts and cards responsive on smaller screens */
+@media (max-width: 600px) {
+    .main-content .card:has(#categoryChart),
+    .main-content .card:has(#billingChart) {
+        padding: 18px;
+        border-radius: 20px;
+    }
+
+    .category-row {
+        grid-template-columns: minmax(75px, 100px) minmax(40px, 1fr) auto;
+        gap: 9px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .billing-summary p {
+        transition: none;
+    }
+
+    .billing-summary p:hover {
+        transform: none;
+    }
+}
+
+/* 🩷 SUBTRACK ANALYTICS: VISIBLE PASTEL GLOW-UP */
+
+/* A more noticeable lavender + blush background */
+body:has(#categoryChart) .main-content {
+    background:
+        radial-gradient(ellipse at 85% 8%, #f7d9f0 0%, transparent 35%),
+        radial-gradient(ellipse at 10% 45%, #e7dcff 0%, transparent 40%),
+        #faf7ff !important;
+}
+
+/* Make both analytics panels visibly dreamy */
+.main-content .card:has(#categoryChart),
+.main-content .card:has(#billingChart) {
+    background: linear-gradient(135deg, #ffffff 0%, #fbf5ff 55%, #fff0f7 100%) !important;
+    border: 1px solid #dfccff !important;
+    box-shadow: 0 14px 38px rgba(139, 92, 246, 0.13) !important;
+}
+
+/* Make the chart canvas area feel softer */
+.main-content .card:has(#categoryChart) > div,
+.main-content .card:has(#billingChart) > div {
+    border-radius: 20px;
+}
+
+/* Pastel pink-purple category bars */
+.category-row .progress {
+    background: #f3eafd !important;
+}
+
+.category-row .progress-bar {
+    background: linear-gradient(90deg, #e9a8d4, #b18aff, #8052d6) !important;
+    box-shadow: 0 0 12px rgba(177, 138, 255, 0.25);
+}
+
+/* Give the billing summary a blush tint */
+.billing-summary p {
+    background: linear-gradient(100deg, #f3eaff, #fff0f7) !important;
+    border: 1px solid #e8d5ff !important;
+    border-radius: 18px !important;
+}
+
+/* Chart headings get a little accent */
+.main-content .card:has(#categoryChart) h2::after,
+.main-content .card:has(#billingChart) h2::after {
+    content: " ✧";
+    color: #c17adf;
+}
+

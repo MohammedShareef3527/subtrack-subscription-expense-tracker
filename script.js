@@ -523,6 +523,7 @@ function displayDashboardRenewals() {
    ANALYTICS
 ========================================================= */
 
+
 function displayAnalytics() {
     const categoryBox = document.getElementById("categoryBreakdown");
     const billingBox = document.getElementById("billingBreakdown");
@@ -561,10 +562,8 @@ function displayAnalytics() {
 
     subscriptions.forEach(function (item) {
         const category = item.category || "Other";
-        const monthlyCost = getMonthlyCost(item);
-
         categories[category] =
-            (categories[category] || 0) + monthlyCost;
+            (categories[category] || 0) + getMonthlyCost(item);
     });
 
     const categoryNames = Object.keys(categories);
@@ -572,6 +571,28 @@ function displayAnalytics() {
         return categories[category];
     });
 
+    if (categoryBox) {
+        const total = getTotalMonthlyCost();
+
+        categoryBox.innerHTML = categoryNames.map(function (category) {
+            const amount = categories[category];
+            const percentage = total > 0 ? (amount / total) * 100 : 0;
+
+            return `
+                <div class="category-row">
+                    <div class="category-name">${escapeHtml(category)}</div>
+                    <div class="progress">
+                        <div class="progress-bar"
+                             style="width:${Math.min(percentage, 100)}%">
+                        </div>
+                    </div>
+                    <div class="category-amount">${money(amount)} / month</div>
+                </div>
+            `;
+        }).join("");
+    }
+
+    
     if (categoryCanvas && typeof Chart !== "undefined") {
         if (categoryChartInstance) {
             categoryChartInstance.destroy();
@@ -582,11 +603,23 @@ function displayAnalytics() {
             data: {
                 labels: categoryNames,
                 datasets: [{
-                    data: categoryAmounts
+                    data: categoryAmounts,
+                    backgroundColor: [
+                        "#8B5CF6",
+                        "#C4B5FD",
+                        "#E9D5FF",
+                        "#A78BFA",
+                        "#6D28D9",
+                        "#DDD6FE"
+                    ],
+                    borderColor: "#FFFFFF",
+                    borderWidth: 4,
+                    hoverOffset: 12
                 }]
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: {
                         position: "bottom"
@@ -604,32 +637,6 @@ function displayAnalytics() {
         });
     }
 
-    if (categoryBox) {
-        const total = getTotalMonthlyCost();
-
-        categoryBox.innerHTML = categoryNames.map(function (category) {
-            const amount = categories[category];
-            const percentage = total > 0 ? amount / total * 100 : 0;
-
-            return `
-                <div class="category-row">
-                    <div class="category-name">
-                        ${escapeHtml(category)}
-                    </div>
-
-                    <div class="progress">
-                        <div class="progress-bar"
-                             style="width:${Math.min(percentage, 100)}%">
-                        </div>
-                    </div>
-
-                    <div class="category-amount">
-                        ${money(amount)} / month
-                    </div>
-                </div>
-            `;
-        }).join("");
-    }
 
     if (billingCanvas && typeof Chart !== "undefined") {
         if (billingChartInstance) {
@@ -642,15 +649,31 @@ function displayAnalytics() {
                 labels: subscriptions.map(function (item) {
                     return item.name;
                 }),
-                datasets: [{
-                    label: "Monthly equivalent (₹)",
-                    data: subscriptions.map(function (item) {
-                        return getMonthlyCost(item);
-                    })
-                }]
+                
+datasets: [{
+    label: "Monthly equivalent (₹)",
+    data: subscriptions.map(function (item) {
+        return getMonthlyCost(item);
+    }),
+    backgroundColor: [
+        "#B99AFF",
+        "#DCC7FF",
+        "#F5B8D4"
+    ],
+    borderColor: [
+        "#8B5CF6",
+        "#B794F6",
+        "#E78AB8"
+    ],
+    borderWidth: 2,
+    borderRadius: 10,
+    borderSkipped: false
+}]
+
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 scales: {
                     y: {
                         beginAtZero: true,
@@ -693,9 +716,6 @@ function displayAnalytics() {
     }
 }
 
-/* =========================================================
-   REMINDERS
-========================================================= */
 
 function displayReminders() {
     const box =
@@ -982,6 +1002,7 @@ function updateAll() {
     displayDashboardRenewals();
     displayAnalytics();
     displayReminders();
+    renderSubscriptionCharts();
 }
 
 /* =========================================================
