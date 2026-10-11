@@ -153,9 +153,15 @@ if (signupForm) {
 }
 
 /* Protect all normal application pages */
+const currentPath = window.location.pathname
+    .replace(/\/+$/, "")
+    .replace(/\.html$/, "");
+
 const isAuthPage =
-    window.location.pathname.endsWith("login.html") ||
-    window.location.pathname.endsWith("signup.html");
+    currentPath.endsWith("/login") ||
+    currentPath.endsWith("/signup") ||
+    currentPath === "login" ||
+    currentPath === "signup";
 
 if (!isAuthPage) {
     protectAppPage();
