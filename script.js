@@ -1002,7 +1002,6 @@ function updateAll() {
     displayDashboardRenewals();
     displayAnalytics();
     displayReminders();
-    renderSubscriptionCharts();
 }
 
 /* =========================================================
